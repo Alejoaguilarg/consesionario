@@ -23,7 +23,7 @@ import {FotoRepository} from '../repositories';
 export class FotoController {
   constructor(
     @repository(FotoRepository)
-    public fotoRepository : FotoRepository,
+    public fotoRepository: FotoRepository,
   ) {}
 
   @post('/fotos')
@@ -52,9 +52,7 @@ export class FotoController {
     description: 'Foto model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Foto) where?: Where<Foto>,
-  ): Promise<Count> {
+  async count(@param.where(Foto) where?: Where<Foto>): Promise<Count> {
     return this.fotoRepository.count(where);
   }
 
@@ -70,9 +68,7 @@ export class FotoController {
       },
     },
   })
-  async find(
-    @param.filter(Foto) filter?: Filter<Foto>,
-  ): Promise<Foto[]> {
+  async find(@param.filter(Foto) filter?: Filter<Foto>): Promise<Foto[]> {
     return this.fotoRepository.find(filter);
   }
 
@@ -106,7 +102,7 @@ export class FotoController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Foto, {exclude: 'where'}) filter?: FilterExcludingWhere<Foto>
+    @param.filter(Foto, {exclude: 'where'}) filter?: FilterExcludingWhere<Foto>,
   ): Promise<Foto> {
     return this.fotoRepository.findById(id, filter);
   }
